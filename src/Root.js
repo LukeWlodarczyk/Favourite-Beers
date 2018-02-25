@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import BeerList from './components/BeerList';
-import Random from './components/Random';
+import Favourites from './components/Favourites';
  
-const App = ({ store }) => (
+const Root = ({ store }) => (
   <Provider store={store}>
     <Router>
-      <div className="container">
+    <div className="container">
         <ul>
           <li>
             <Link to="/">Home</Link>
@@ -19,14 +19,15 @@ const App = ({ store }) => (
         </ul>
 
         <Route exact path="/" component={BeerList} />
-        <Route path="/random" component={Random} />
+        <Route path="/favourites" component={Favourites} />
       </div>
     </Router>
+
   </Provider>
 )
  
-App.propTypes = {
+Root.propTypes = {
   store: PropTypes.object.isRequired
 }
  
-export default App
+export default Root
