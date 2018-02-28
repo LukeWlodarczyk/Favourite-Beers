@@ -6,23 +6,36 @@ import { getBeers } from '../actions/index'
 
 
 const mapStateToProps = state => {
-  return { beerList: state.beers.beers };
+  return {
+    beerList: state.beers.beers,
+    isError: state.beers.isError,
+    isLoading: state.beers.isLoading,
+    error: state.beers.error,
+   };
 };
-
-// const mapStateToProps = ( {users} ) => ( { users } );
 
 class BeerList extends Component {
 
   componentDidMount() {
     const { getBeers } = this.props;
-    getBeers(false);
+    getBeers();
   }
 
   render() {
+    const { beerList, isError, isLoading } = this.props;
+
+    if(isError) {
+      return <p>Error!</p>
+    }
+
+    if(isLoading) {
+      return <p>Loading...</p>
+    }
+// style={{transition: '.5s', opacity: isLoading ? .5 : 1 }}
     return (
       <ul className="list-group list-group-flush">
       <p>Users</p>
-        {this.props.beerList.map( beer => (
+        {beerList.map( beer => (
           <BeerItem
             className="list-group-item"
             key={beer.id} beer={beer}

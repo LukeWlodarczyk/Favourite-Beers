@@ -14,12 +14,14 @@ const App = ({ store }) => (
             <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="/favourites">Your favourites</Link>
+            <Link to="/random">Random Beer</Link>
           </li>
         </ul>
-
-        <Route exact path="/" component={BeerList} />
-        <Route path="/random" component={Random} />
+        <Switch>
+          <Route exact path="/" component={BeerList} />
+          <Route path="/random" component={Random} />
+          <Route path="/:id" component={BeerItemFull} />
+        </Switch>
       </div>
     </Router>
   </Provider>

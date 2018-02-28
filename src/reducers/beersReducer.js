@@ -3,7 +3,7 @@ import { GET_DATA_REQUESTED, GET_DATA_DONE, GET_DATA_FAILED } from '../constants
 
 const initialState = {
   isLoading: false,
-  error: false,
+  isError: false,
   beers: [],
 }
 
@@ -14,7 +14,7 @@ export default (state=initialState, action) => {
     case GET_DATA_DONE:
       return { ...state, isLoading: false, beers: action.payload };
     case GET_DATA_FAILED:
-      return { ...state, isLoading: false, isError: true }
+      return { ...state, isLoading: false, isError: true}
     default:
       return state;
   }

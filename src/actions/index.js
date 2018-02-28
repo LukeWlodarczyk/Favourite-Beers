@@ -1,46 +1,49 @@
 import fetch from 'isomorphic-fetch';
-// import { ADD_FAVOURITE_BEER, DELETE_FAVOURITE_BEER } from '../constants/action-types';
+import { GET_DATA_REQUESTED, GET_DATA_DONE, GET_DATA_FAILED, GET_RANDOM_BEER } from '../constants/action-types';
+
 
 const getDataRequested = () => {
   return {
-    type: 'GET_DATA_REQUESTED'
+    type: GET_DATA_REQUESTED
   };
 }
 
 const getDataDone = data => {
   return {
-    type: 'GET_DATA_DONE',
+    type: GET_DATA_DONE,
     payload: data
   };
 }
 
-const getDataFailed = error => {
+const getDataFailed = () => {
   return {
-    type: 'GET_DATA_FAILED',
-    payload: error
+    type: GET_DATA_FAILED
   };
 }
 
-export const getBeers = random => dispatch => {
-  // set state to "loading"
+export const getBeers = () => dispatch => {
+
   dispatch(getDataRequested());
 
-  let query = random ? '/random' : '';
-  let url = 'https://api.punkapi.com/v2/beers'+query;
+  let url = 'https://api.punkapi.com/v2/beers';
 
   fetch(url)
     .then(response => response.json())
     .then(data => {
-      // set state for success
       dispatch(getDataDone(data));
     })
     .catch(error => {
-      // set state for error
       dispatch(getDataFailed(error));
     })
 }
 
 
+
+const getRandomBeer = beer => {
+  return {
+    type: 'GET_RANDOM_BEER',
+  };
+}
 
 
 

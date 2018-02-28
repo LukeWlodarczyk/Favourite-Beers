@@ -1,9 +1,9 @@
 import { combineReducers } from "redux";
-import getBeersReducer from './getBeersReducer';
-import favouriteBeersReducer from './getBeersReducer';
+import beersReducer from './beersReducer';
+import randomBeerReducer from './randomBeerReducer';
 
 const rootReducer=combineReducers({
-  beers: getBeersReducer,
-  favBeers: favouriteBeersReducer,
+  beers: beersReducer,
+  randomBeer: randomBeerReducer,
 })
 export default rootReducer;
