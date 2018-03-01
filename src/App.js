@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import BeerList from './components/BeerList';
 import Random from './components/Random';
+import BeerItemFull from './components/BeerItemFull';
  
 const App = ({ store }) => (
   <Provider store={store}>

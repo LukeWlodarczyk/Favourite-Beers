@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import { Link } from 'react-router-dom';
 // import { bindActionCreators } from 'redux';
 // import { deleteUser } from "../actions/index";
 // import { updateUser } from "../actions/index";
@@ -9,10 +10,8 @@ import { connect } from "react-redux";
 
 const BeerItem = (props) => {
 
-
-
   return (
-      <li>{props.beer.name}</li>
+      <p>{props.beer.name}</p>
   )
 }
 

@@ -3,37 +3,67 @@ import { connect } from "react-redux";
 import { bindActionCreators } from 'redux';
 import PropTypes from "prop-types";
 import BeerItem from './BeerItem';
-import { getBeers } from '../actions/index'
+import { getSingleBeer } from '../actions/index';
+import { Link } from 'react-router-dom';
 
 const mapStateToProps = state => {
-  return { beerList: state.beers.beers };
+  return {
+    beer: state.singleBeer.beer,
+    isLoading: state.singleBeer.isLoading,
+    isError:state.singleBeer.isError
+  };
 };
 
-class RandomBeer extends Component {
+class RandomBeerItem extends Component {
+  constructor() {
+    super();
+    this.state = {
+      isShuffling: false,
+    }
+  }
 
   componentDidMount() {
-    const { getBeers } = this.props;
-    getBeers();
+    const { getSingleBeer } = this.props;
+    getSingleBeer('random');
+  }
+
+  getRandomBeer = () => {
+    const { getSingleBeer } = this.props;
+    this.setState({
+      isShuffling: true,
+    })
+    setTimeout( () => {
+      this.setState({
+        isShuffling: false,
+      })
+      getSingleBeer('random');
+    },2000)
   }
 
   render() {
+
+    const { beer, isError, isLoading } = this.props;
+    console.log(this.props);
+
+    if(isError) {
+      return <p>Error!</p>
+    }
+
+    if(isLoading || this.state.isShuffling) {
+      return <p>Loading...</p>
+    }
+
     return (
       <div>
-        {this.props.beerList.map( beer => (
-          <BeerItem
-            className="list-group-item"
-            key={beer.id} beer={beer}
-          />
-        ))}
+        <Link to={`/${beer.id}`}>
+          <BeerItem beer={beer} />
+        </Link>
+        <button onClick={this.getRandomBeer}>Get random Beer</button>
       </div>
     )
   }
 }
 
-const RandomBeer1 = connect(mapStateToProps, { getBeers })(RandomBeer);
+const RandomBeer = connect(mapStateToProps, { getSingleBeer })(RandomBeerItem);
 
-// ConnectedForm.propTypes = {
-//   addUser: PropTypes.func.isRequired
-// };
-
-export default RandomBeer1;
+export default RandomBeer;

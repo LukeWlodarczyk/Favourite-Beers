@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import BeerItem from './BeerItem';
-import { getBeers } from '../actions/index'
+import { getBeers } from '../actions/index';
+import { Link } from 'react-router-dom';
 
 
 const mapStateToProps = state => {
@@ -36,10 +37,14 @@ class BeerList extends Component {
       <ul className="list-group list-group-flush">
       <p>Users</p>
         {beerList.map( beer => (
-          <BeerItem
-            className="list-group-item"
-            key={beer.id} beer={beer}
-          />
+          <li key={beer.id}>
+            <Link to={`/${beer.id}`}>
+              <BeerItem
+                className="list-group-item"
+                beer={beer}
+              />
+            </Link>
+          </li>
         ))}
       </ul>
     )
