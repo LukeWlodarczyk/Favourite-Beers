@@ -1,10 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Link } from 'react-router-dom';
 
-const BeerItem = (props) => {
+const BeerItem = ({ beer }) => {
 
   return (
-      <p>{props.beer.name}</p>
+    <Link to={`/${beer.id}`}>
+      <p>{beer.name}</p>
+    </Link>
   )
 }
 

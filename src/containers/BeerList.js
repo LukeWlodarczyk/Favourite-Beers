@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import BeerItem from './BeerItem';
+import BeerItem from '../components/BeerItem';
 import { getBeers } from '../actions/index';
-import { Link } from 'react-router-dom';
 
 
 const mapStateToProps = state => {
@@ -49,12 +48,10 @@ class BeerList extends Component {
       <p>Beers</p>
         {beerList.slice(0, this.state.num).map( beer => (
           <li key={beer.id}>
-            <Link to={`/${beer.id}`}>
-              <BeerItem
-                className="list-group-item"
-                beer={beer}
-              />
-            </Link>
+            <BeerItem
+              className="list-group-item"
+              beer={beer}
+            />
           </li>
         ))}
         {(this.state.num < 80) && <button onClick={this.loadMore} >More</button>}

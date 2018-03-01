@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import BeerItem from './BeerItem';
+import BeerItem from '../components/BeerItem';
 import { getSingleBeer } from '../actions/index';
-import { Link } from 'react-router-dom';
 
 const mapStateToProps = state => {
   return {
@@ -54,9 +53,7 @@ class RandomBeerItem extends Component {
 
     return (
       <div>
-        <Link to={`/${beer.id}`}>
-          <BeerItem beer={beer} />
-        </Link>
+        <BeerItem beer={beer} />
         <button onClick={this.getRandomBeer}>Get random Beer</button>
       </div>
     )
