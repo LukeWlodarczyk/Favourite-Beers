@@ -15,8 +15,8 @@ const mapStateToProps = state => {
 };
 
 class RandomBeerItem extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       isShuffling: false,
     }
@@ -37,7 +37,7 @@ class RandomBeerItem extends Component {
         isShuffling: false,
       })
       getSingleBeer('random');
-    },2000)
+    },1000)
   }
 
   render() {

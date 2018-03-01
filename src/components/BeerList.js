@@ -16,10 +16,22 @@ const mapStateToProps = state => {
 };
 
 class BeerList extends Component {
-
+  constructor(props) {
+    super(props)
+    this.state = {
+      num: 20
+    }
+  }
   componentDidMount() {
     const { getBeers } = this.props;
     getBeers();
+  }
+
+
+  loadMore = () => {
+    this.setState({
+      num: this.state.num+20
+    })
   }
 
   render() {
@@ -35,8 +47,8 @@ class BeerList extends Component {
 // style={{transition: '.5s', opacity: isLoading ? .5 : 1 }}
     return (
       <ul className="list-group list-group-flush">
-      <p>Users</p>
-        {beerList.map( beer => (
+      <p>Beers</p>
+        {beerList.slice(0, this.state.num).map( beer => (
           <li key={beer.id}>
             <Link to={`/${beer.id}`}>
               <BeerItem
@@ -46,6 +58,8 @@ class BeerList extends Component {
             </Link>
           </li>
         ))}
+        {(this.state.num < 80) && <button onClick={this.loadMore} >More</button>}
+
       </ul>
     )
   }
