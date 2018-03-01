@@ -4,7 +4,7 @@ import { GET_BEER_REQUESTED, GET_BEER_DONE, GET_BEER_FAILED } from '../constants
 const initialState = {
   isLoading: false,
   isError: false,
-  beer: [],
+  beer: {},
 }
 
 export default (state=initialState, action) => {

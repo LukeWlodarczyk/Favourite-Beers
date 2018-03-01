@@ -22,7 +22,6 @@ class BeerItemFull extends Component {
 
   render() {
     const { beer, isError, isLoading } = this.props;
-    console.log(this.props);
 
     if(isError) {
       return <p>Error!</p>
@@ -31,6 +30,8 @@ class BeerItemFull extends Component {
     if(isLoading) {
       return <p>Loading...</p>
     }
+
+
 // style={{transition: '.5s', opacity: isLoading ? .5 : 1 }}
     return (
       <div>
@@ -41,11 +42,11 @@ class BeerItemFull extends Component {
 }
 
 const BeerItem = connect(mapStateToProps, { getSingleBeer })(BeerItemFull);
-// const List = connect(state => ({ users: state.users }))(ConnectedList);
-// const List = connect( ( {users} ) => ( { users } ) )(ConnectedList);
 
-// BeerItemFull.propTypes = {
-//   beer: PropTypes.obj.isRequired
-// };
+BeerItemFull.propTypes = {
+  beer: PropTypes.object.isRequired,
+  isError: PropTypes.bool,
+  isLoading: PropTypes.bool
+};
 
 export default BeerItem

@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { bindActionCreators } from 'redux';
 import PropTypes from "prop-types";
 import BeerItem from './BeerItem';
 import { getSingleBeer } from '../actions/index';
@@ -35,7 +34,7 @@ class RandomBeerItem extends Component {
     setTimeout( () => {
       this.setState({
         isShuffling: false,
-      })
+      });
       getSingleBeer('random');
     },1000)
   }
@@ -65,5 +64,11 @@ class RandomBeerItem extends Component {
 }
 
 const RandomBeer = connect(mapStateToProps, { getSingleBeer })(RandomBeerItem);
+
+RandomBeerItem.propTypes = {
+  beer: PropTypes.object.isRequired,
+  isError: PropTypes.bool,
+  isLoading: PropTypes.bool
+};
 
 export default RandomBeer;

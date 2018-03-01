@@ -11,7 +11,6 @@ const mapStateToProps = state => {
     beerList: state.beers.beers,
     isError: state.beers.isError,
     isLoading: state.beers.isLoading,
-    error: state.beers.error,
    };
 };
 
@@ -66,11 +65,11 @@ class BeerList extends Component {
 }
 
 const Beers = connect(mapStateToProps, { getBeers })(BeerList);
-// const List = connect(state => ({ users: state.users }))(ConnectedList);
-// const List = connect( ( {users} ) => ( { users } ) )(ConnectedList);
 
 BeerList.propTypes = {
-  beerList: PropTypes.array.isRequired
+  beerList: PropTypes.array.isRequired,
+  isError: PropTypes.bool,
+  isLoading: PropTypes.bool
 };
 
 export default Beers

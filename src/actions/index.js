@@ -49,20 +49,20 @@ export const getBeers = () => dispatch => {
 
 const getBeerRequested = () => {
   return {
-    type: 'GET_BEER_REQUESTED'
+    type: GET_BEER_REQUESTED
   };
 }
 
 const getBeerDone = beer => {
   return {
-    type: 'GET_BEER_DONE',
+    type: GET_BEER_DONE,
     payload: beer
   };
 }
 
 const getBeerFailed = () => {
   return {
-    type: 'GET_BEER_FAILED'
+    type: GET_BEER_FAILED
   };
 }
 
@@ -74,6 +74,15 @@ export const getSingleBeer = id => dispatch => {
 
   fetch(url)
     .then(response => response.json())
+    .then( res => {
+      return new Promise( (resolve, reject) => {
+        if(res.statusCode === 404) {
+          reject(res)
+        } else {
+          resolve(res)
+        }
+      })
+    })
     .then(data => {
       dispatch(getBeerDone(data[0]));
     })
@@ -81,50 +90,3 @@ export const getSingleBeer = id => dispatch => {
       dispatch(getBeerFailed(error));
     })
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//
-// export const addUser = user => dispatch => dispatch(addUserAsync(user))
-//
-// export const addUserAsync = user => {
-//     return {
-//       type: ADD_USER,
-//       payload: user
-//     };
-// }
-//
-// export const updateUser = user => dispatch => dispatch(updateUserAsync(user))
-//
-// export const updateUserAsync = user => {
-//     return {
-//       type: UPDATE_USER,
-//       payload: user
-//     };
-// }
-//
-// export const deleteUser = id => dispatch => dispatch(deleteUserAsync(id))
-//
-// export const deleteUserAsync = id => {
-//     return {
-//       type: DELETE_USER,
-//       payload: id
-//     };
-// }
