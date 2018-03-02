@@ -2,12 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
+import Store from "./Store";
 import BeerList from './containers/BeerList';
 import Random from './containers/Random';
 import BeerItemFull from './containers/BeerItemFull';
  
-const App = ({ store }) => (
-  <Provider store={store}>
+const App = () => (
+  <Provider store={Store}>
     <Router>
       <div className="container">
         <ul>
@@ -27,9 +28,5 @@ const App = ({ store }) => (
     </Router>
   </Provider>
 )
- 
-App.propTypes = {
-  store: PropTypes.object.isRequired
-}
  
 export default App
