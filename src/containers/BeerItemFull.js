@@ -35,7 +35,16 @@ class BeerItemFull extends Component {
 // style={{transition: '.5s', opacity: isLoading ? .5 : 1 }}
     return (
       <div>
-        {beer.name}
+        <h1>{beer.name}</h1>
+        <p>{beer.tagline}</p>
+        <p>{beer.description}</p>
+        <p>{beer.brewers_tips}</p>
+        <p>Pairing food:</p>
+        <ul>
+          {beer.food_pairing.map( f => <li>{f}</li>)}
+        </ul>
+        <img src={beer.image_url} />
+        <small>{beer.contributed_by}</small>
       </div>
     )
   }
