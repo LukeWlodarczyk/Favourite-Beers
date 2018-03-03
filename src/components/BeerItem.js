@@ -5,12 +5,14 @@ import { Link } from 'react-router-dom';
 const BeerItem = ({ beer }) => {
 
   return (
-    <Link to={`/${beer.id}`}>
-      <h1>{beer.name}</h1>
-      <p>{beer.tagline}</p>
-      <p>{beer.description}</p>
-      <p>{beer.brewers_tips}</p>
+    <Link className='link beer-card' to={`/${beer.id}`}>
       <img className='img-beer' src={beer.image_url} alt={`${beer.name}'s bottle`} />
+      <div className="beer-details">
+        <h1 className='beer-heading' >{beer.name}</h1>
+        <p >{beer.tagline}</p>
+
+        <p>{beer.brewers_tips}</p>
+      </div>
     </Link>
   )
 }

@@ -44,18 +44,18 @@ class BeerList extends Component {
     }
 // style={{transition: '.5s', opacity: isLoading ? .5 : 1 }}
     return (
-      <ul className=''>
-        {beerList.slice(0, this.state.num).map( beer => (
-          <li key={beer.id}>
-            <BeerItem
-              className="list-group-item"
-              beer={beer}
-            />
-          </li>
-        ))}
-        {(this.state.num < 80) && <button onClick={this.loadMore} >More</button>}
-
-      </ul>
+      <div>
+        <ul className='beer-list'>
+          {beerList.slice(0, this.state.num).map( beer => (
+            <li key={beer.id}>
+              <BeerItem
+                beer={beer}
+              />
+            </li>
+          ))}
+        </ul>
+        {(this.state.num < beerList.length) && <button className='btn-more' onClick={this.loadMore} >More</button>}
+      </div>
     )
   }
 }
