@@ -93,6 +93,20 @@ body {
   opacity: 0;
 }
 
+@media (min-width: 950px) {
+  .random-container > .beer-card {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .random-container .img-beer {
+    transform: rotate(90deg);
+    height: 200%;
+    width: 100%;
+    max-width: none;
+    max-height: none;
+  }
+}
+
 .beer-card:hover {
   background: rgba(0, 0, 0, 0.1);
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
@@ -114,10 +128,16 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  max-width: 600px;
 }
 
 .beer-heading {
   font-size: 1.6em;
+}
+
+.beer-tagline {
+  margin-top: .6em;
+  margin-bottom: 1em;
 }
 
 
@@ -139,7 +159,7 @@ body {
 }
 
 .btn-random {
-  margin: 1em 0;
+  margin: 2.5em 0;
   font-size: 1.2em;
   transition: .3s;
   opacity: 0;

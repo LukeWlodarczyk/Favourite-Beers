@@ -51,15 +51,15 @@ class RandomBeerItem extends Component {
 
     if(isLoading || this.state.isShuffling) {
       return (
-        <div className="spinner">
-          <div className="double-bounce1"></div>
-          <div className="double-bounce2"></div>
+        <div class="spinner">
+          <div class="double-bounce1"></div>
+          <div class="double-bounce2"></div>
         </div>
       )
     }
 
     return (
-      <div>
+      <div className='random-container'>
         <BeerItem beer={beer} />
         <button className='btn-random' onClick={this.getRandomBeer}>Get random Beer</button>
       </div>

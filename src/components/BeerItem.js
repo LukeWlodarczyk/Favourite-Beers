@@ -9,8 +9,8 @@ const BeerItem = ({ beer }) => {
       <img className='img-beer' src={beer.image_url} alt={`${beer.name}'s bottle`} />
       <div className="beer-details">
         <h1 className='beer-heading' >{beer.name}</h1>
-        <p >{beer.tagline}</p>
-        <p>{beer.brewers_tips}</p>
+        <p className='beer-tagline'>{beer.tagline}</p>
+        <p className='beer-tips'>{beer.brewers_tips}</p>
       </div>
     </Link>
   )
