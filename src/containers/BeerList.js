@@ -36,16 +36,15 @@ class BeerList extends Component {
     const { beerList, isError, isLoading } = this.props;
 
     if(isError) {
-      return <p className='error-info'>Error! :(</p>
+      return <p className='error-info'>Error!</p>
     }
 
     if(isLoading) {
       return (
-        <div class="spinner">
-          <div class="double-bounce1"></div>
-          <div class="double-bounce2"></div>
+        <div className="spinner">
+          <div className="double-bounce1"></div>
+          <div className="double-bounce2"></div>
         </div>
-
       )
     }
 

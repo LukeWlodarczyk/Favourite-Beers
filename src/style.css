@@ -121,7 +121,8 @@ body {
 }
 
 
-.btn-more {
+.btn-more,
+.btn-random {
   width: 100%;
   padding: 1em;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
@@ -131,9 +132,18 @@ body {
   transition: .3s;
 }
 
-.btn-more:hover {
+.btn-more:hover,
+.btn-random:hover {
   cursor: pointer;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.btn-random {
+  margin: 1em 0;
+  font-size: 1.2em;
+  transition: .3s;
+  opacity: 0;
+  animation : fadeIn .8s .2s forwards;
 }
 
 

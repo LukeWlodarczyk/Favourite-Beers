@@ -27,6 +27,8 @@ class RandomBeerItem extends Component {
 
   getRandomBeer = () => {
     const { getSingleBeer } = this.props;
+    let random = Math.random()*3
+    console.log(random);
     this.setState({
       isShuffling: true,
     })
@@ -35,7 +37,7 @@ class RandomBeerItem extends Component {
         isShuffling: false,
       });
       getSingleBeer('random');
-    },1000)
+    }, random*1000)
   }
 
   render() {
@@ -44,17 +46,22 @@ class RandomBeerItem extends Component {
     console.log(this.props);
 
     if(isError) {
-      return <p>Error!</p>
+      return <p className='error-info'>Error!</p>
     }
 
     if(isLoading || this.state.isShuffling) {
-      return <p>Loading...</p>
+      return (
+        <div className="spinner">
+          <div className="double-bounce1"></div>
+          <div className="double-bounce2"></div>
+        </div>
+      )
     }
 
     return (
       <div>
         <BeerItem beer={beer} />
-        <button onClick={this.getRandomBeer}>Get random Beer</button>
+        <button className='btn-random' onClick={this.getRandomBeer}>Get random Beer</button>
       </div>
     )
   }
