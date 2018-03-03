@@ -44,8 +44,7 @@ class BeerList extends Component {
     }
 // style={{transition: '.5s', opacity: isLoading ? .5 : 1 }}
     return (
-      <ul className="list-group list-group-flush">
-      <p>Beers</p>
+      <ul className=''>
         {beerList.slice(0, this.state.num).map( beer => (
           <li key={beer.id}>
             <BeerItem

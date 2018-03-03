@@ -31,6 +31,13 @@ class BeerItemFull extends Component {
       return <p>Loading...</p>
     }
 
+    const pairing = beer.food_pairing  &&
+      (
+        <ul>
+          <p>Pairing food:</p>
+          {beer.food_pairing.map( (f, i) => <li key={i}>{f}</li>)}
+        </ul>
+      )
 
 // style={{transition: '.5s', opacity: isLoading ? .5 : 1 }}
     return (
@@ -39,12 +46,11 @@ class BeerItemFull extends Component {
         <p>{beer.tagline}</p>
         <p>{beer.description}</p>
         <p>{beer.brewers_tips}</p>
-        <p>Pairing food:</p>
+        <img className='img-beer-full' src={beer.image_url} alt={`${beer.name}'s bottle`}/>
         <ul>
-          {beer.food_pairing.map( f => <li>{f}</li>)}
+          {pairing}
         </ul>
-        <img src={beer.image_url} />
-        <small>{beer.contributed_by}</small>
+        <small>Contributed by: {beer.contributed_by}</small>
       </div>
     )
   }

@@ -10,7 +10,7 @@ const BeerItem = ({ beer }) => {
       <p>{beer.tagline}</p>
       <p>{beer.description}</p>
       <p>{beer.brewers_tips}</p>
-      <img src={beer.image_url} />
+      <img className='img-beer' src={beer.image_url} alt={`${beer.name}'s bottle`} />
     </Link>
   )
 }

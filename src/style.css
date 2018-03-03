@@ -1,0 +1,11 @@
+.img-beer {
+  width: 150px;
+  height: 300px;
+  object-fit: scale-down;
+}
+
+.img-beer-full {
+  width: 150px;
+  height: 300px;
+  object-fit: scale-down;
+}
