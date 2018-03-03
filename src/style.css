@@ -11,6 +11,54 @@ body {
 
 }
 
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1em;
+  width: 100%;
+  height: 100px;
+  background: rgba(0, 0, 0, .15);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 3em;
+}
+
+.logo {
+  padding: .5em;
+  font-size: 8vw;
+}
+
+.nav {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.nav a {
+  text-decoration: none;
+  color: black;
+  padding: 1em;
+  font-size: 4vw;
+}
+
+.nav a:hover {
+  text-decoration: underline;
+}
+
+
+@media (min-width: 700px) {
+  .logo {
+    font-size: 3.5em;
+  }
+
+  .nav a {
+    font-size: 1.8em;
+  }
+}
+
+
 .container {
   margin: 0 auto;
   width: 100%;
@@ -42,6 +90,8 @@ body {
   color: black;
   height: 100%;
   transition: .3s;
+  animation: fadeIn .8s .2s forwards;
+  opacity: 0;
 }
 
 .beer-card:hover {
@@ -85,4 +135,61 @@ body {
 .btn-more:hover {
   cursor: pointer;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+
+
+
+
+.error-info {
+  background-color: rgb(235, 116, 116);
+  border: 1px solid red;
+  padding: 2em;
+  margin: 5em auto;
+  width: 40%;
+  text-align: center;
+  font-size: 1em;
+  opacity: 0;
+  animation: fadeIn .6s forwards;
+}
+
+
+
+
+/* SPINNER */
+.spinner {
+  width: 40px;
+  height: 40px;
+  position: relative;
+  margin: 100px auto;
+}
+
+.double-bounce1, .double-bounce2 {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, .3);
+  position: absolute;
+  top: 0;
+  left: 0;
+  animation: sk-bounce 1s infinite ease-in-out;
+}
+
+.double-bounce2 {
+  animation-delay: -.5s;
+}
+
+@keyframes sk-bounce {
+  0%, 100% {
+    transform: scale(0.0);
+  } 50% {
+    transform: scale(1.0);
+  }
+}
+
+
+@keyframes fadeIn {
+  100% {
+    opacity: 1;
+  }
 }

@@ -36,13 +36,19 @@ class BeerList extends Component {
     const { beerList, isError, isLoading } = this.props;
 
     if(isError) {
-      return <p>Error!</p>
+      return <p className='error-info'>Error! :(</p>
     }
 
     if(isLoading) {
-      return <p>Loading...</p>
+      return (
+        <div class="spinner">
+          <div class="double-bounce1"></div>
+          <div class="double-bounce2"></div>
+        </div>
+
+      )
     }
-// style={{transition: '.5s', opacity: isLoading ? .5 : 1 }}
+
     return (
       <div>
         <ul className='beer-list'>
@@ -54,7 +60,9 @@ class BeerList extends Component {
             </li>
           ))}
         </ul>
-        {(this.state.num < beerList.length) && <button className='btn-more' onClick={this.loadMore} >More</button>}
+        {(this.state.num < beerList.length) &&
+          <button className='btn-more' onClick={this.loadMore} >More</button>
+        }
       </div>
     )
   }

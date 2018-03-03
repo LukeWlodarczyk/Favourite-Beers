@@ -10,7 +10,6 @@ const BeerItem = ({ beer }) => {
       <div className="beer-details">
         <h1 className='beer-heading' >{beer.name}</h1>
         <p >{beer.tagline}</p>
-
         <p>{beer.brewers_tips}</p>
       </div>
     </Link>
