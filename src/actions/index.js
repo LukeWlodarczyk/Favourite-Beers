@@ -32,9 +32,7 @@ export const getBeers = () => dispatch => {
 
   dispatch(getBeersRequested());
 
-  let url = 'https://api.punkapi.com/v2/beers?page=1&per_page=80';
-
-  fetch(url)
+  fetch('https://api.punkapi.com/v2/beers?page=1&per_page=80')
     .then(response => response.json())
     .then(data => {
       dispatch(getBeersDone(data));
