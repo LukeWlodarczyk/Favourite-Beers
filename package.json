@@ -2,7 +2,7 @@
   "name": "Favourite-Beers",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://lukewlodarczyk.github.io/",
+  "homepage": "https://lukewlodarczyk.github.io/Favourite-Beers",
   "dependencies": {
     "history": "^4.7.2",
     "isomorphic-fetch": "^2.2.1",
