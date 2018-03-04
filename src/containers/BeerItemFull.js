@@ -24,33 +24,39 @@ class BeerItemFull extends Component {
     const { beer, isError, isLoading } = this.props;
 
     if(isError) {
-      return <p>Error!</p>
+      return <p className='error-info'>Error!</p>
     }
 
     if(isLoading) {
-      return <p>Loading...</p>
+      return (
+        <div className="spinner">
+          <div className="double-bounce1"></div>
+          <div className="double-bounce2"></div>
+        </div>
+      )
     }
 
     const pairing = beer.food_pairing  &&
       (
         <ul>
-          <p>Pairing food:</p>
-          {beer.food_pairing.map( (f, i) => <li key={i}>{f}</li>)}
+          <h3 className='beer-pairing-head'>Pairing food:</h3>
+          {beer.food_pairing.map( (f, i) => <li className='beer-pairing-item' key={i}>{f}</li>)}
         </ul>
       )
 
-// style={{transition: '.5s', opacity: isLoading ? .5 : 1 }}
     return (
-      <div>
-        <h1>{beer.name}</h1>
-        <p>{beer.tagline}</p>
-        <p>{beer.description}</p>
-        <p>{beer.brewers_tips}</p>
-        <img className='img-beer-full' src={beer.image_url} alt={`${beer.name}'s bottle`}/>
-        <ul>
-          {pairing}
-        </ul>
-        <small>Contributed by: {beer.contributed_by}</small>
+      <div className='beer-item-full'>
+        <img className='beer-img-full' src={beer.image_url} alt={`${beer.name}'s bottle`}/>
+        <div className="beer-details">
+          <h1 className='beer-name'>{beer.name}</h1>
+          <p className='beer-tagline'>{beer.tagline}</p>
+          <p className='beer-description'>{beer.description}</p>
+          <p className='beer-tips'>{beer.brewers_tips}</p>
+          <ul>
+            {pairing}
+          </ul>
+          <small className='beer-contributed'>Contributed by: {beer.contributed_by}</small>
+        </div>
       </div>
     )
   }
