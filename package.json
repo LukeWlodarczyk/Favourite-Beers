@@ -1,8 +1,8 @@
 {
-  "name": "Favourite-Beers",
+  "name": "Favourite1",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://lukewlodarczyk.github.io/Favourite-Beers",
+  "homepage": "https://lukewlodarczyk.github.io/Favourite",
   "dependencies": {
     "gh-pages": "^1.1.0",
     "history": "^4.7.2",

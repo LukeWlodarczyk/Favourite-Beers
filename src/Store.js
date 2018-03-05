@@ -7,6 +7,5 @@ import rootReducer from "./reducers/rootReducer";
 export const history = createHistory();
 
 const store = createStore(rootReducer, compose(applyMiddleware(thunk, routerMiddleware(history))));
-console.log(store);
 
 export default store;
