@@ -28,7 +28,6 @@ class RandomBeerItem extends Component {
   getRandomBeer = () => {
     const { getSingleBeer } = this.props;
     let random = Math.random()*3
-    console.log(random);
     this.setState({
       isShuffling: true,
     })
@@ -43,7 +42,6 @@ class RandomBeerItem extends Component {
   render() {
 
     const { beer, isError, isLoading } = this.props;
-    console.log(this.props);
 
     if(isError) {
       return <p className='error-info'>Error!</p>

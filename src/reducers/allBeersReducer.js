@@ -8,7 +8,6 @@ const initialState = {
 }
 
 export default (state=initialState, action) => {
-  console.log(action)
   switch (action.type) {
     case GET_BEERS_REQUESTED:
       return { ...state, isLoading: true };
