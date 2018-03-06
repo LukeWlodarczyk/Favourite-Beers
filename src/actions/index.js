@@ -1,4 +1,4 @@
-import fetch from 'isomorphic-fetch';
+import axios from 'axios';
 import {  GET_BEERS_REQUESTED,
           GET_BEERS_DONE,
           GET_BEERS_FAILED,
@@ -32,8 +32,8 @@ export const getBeers = () => dispatch => {
 
   dispatch(getBeersRequested());
 
-  fetch('https://api.punkapi.com/v2/beers?page=1&per_page=80')
-    .then(response => response.json())
+  axios.get('https://api.punkapi.com/v2/beers?page=1&per_page=80')
+    .then(res => res.data)
     .then(data => {
       dispatch(getBeersDone(data));
     })
@@ -70,17 +70,8 @@ export const getSingleBeer = id => dispatch => {
 
   let url = 'https://api.punkapi.com/v2/beers/'+id;
 
-  fetch(url)
-    .then(response => response.json())
-    .then( res => {
-      return new Promise( (resolve, reject) => {
-        if(res.statusCode === 404) {
-          reject(res)
-        } else {
-          resolve(res)
-        }
-      })
-    })
+  axios.get(url)
+    .then(res => res.data)
     .then(data => {
       dispatch(getBeerDone(data[0]));
     })
