@@ -38,8 +38,7 @@ class BeerItemFull extends Component {
 
     const pairing = beer.food_pairing  &&
       (
-        <ul>
-          <h3 className='beer-pairing-head'>Pairing food:</h3>
+        <ul className='beer-pairing'>
           {beer.food_pairing.map( (f, i) => <li className='beer-pairing-item' key={i}>{f}</li>)}
         </ul>
       )
@@ -52,6 +51,7 @@ class BeerItemFull extends Component {
           <p className='beer-tagline'>{beer.tagline}</p>
           <p className='beer-description'>{beer.description}</p>
           <p className='beer-tips'>{beer.brewers_tips}</p>
+          <h3 className='beer-pairing-head'>Pairing food:</h3>
           <ul>
             {pairing}
           </ul>
