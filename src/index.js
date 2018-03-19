@@ -2,7 +2,7 @@ import React from "react";
 import { render } from "react-dom";
 import registerServiceWorker from './registerServiceWorker';
 import App from './App';
-import style from './style.css';
+import './style.css';
  
 render(
   <App />,

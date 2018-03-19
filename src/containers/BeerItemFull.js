@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { getSingleBeer } from '../actions/index';
-
+import Spinner from '../components/Spinner';
+import ErrorInfo from '../components/ErrorInfo';
 
 const mapStateToProps = state => {
   return {
@@ -24,16 +25,11 @@ class BeerItemFull extends Component {
     const { beer, isError, isLoading } = this.props;
 
     if(isError) {
-      return <p className='error-info'>Error!</p>
+      return <ErrorInfo />
     }
 
     if(isLoading) {
-      return (
-        <div className="spinner">
-          <div className="double-bounce1"></div>
-          <div className="double-bounce2"></div>
-        </div>
-      )
+      return <Spinner />
     }
 
     const pairing = beer.food_pairing  &&

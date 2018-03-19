@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import BeerItem from '../components/BeerItem';
 import { getSingleBeer } from '../actions/index';
+import Spinner from '../components/Spinner';
+import ErrorInfo from '../components/ErrorInfo';
 
 const mapStateToProps = state => {
   return {
@@ -44,16 +46,11 @@ class RandomBeerItem extends Component {
     const { beer, isError, isLoading } = this.props;
 
     if(isError) {
-      return <p className='error-info'>Error!</p>
+      return <ErrorInfo />
     }
 
     if(isLoading || this.state.isShuffling) {
-      return (
-        <div className="spinner">
-          <div className="double-bounce1"></div>
-          <div className="double-bounce2"></div>
-        </div>
-      )
+      return <Spinner />
     }
 
     return (
