@@ -63,8 +63,9 @@ const RandomBeer = connect(mapStateToProps, { getSingleBeer })(RandomBeerItem);
 
 RandomBeerItem.propTypes = {
   beer: PropTypes.object.isRequired,
-  isError: PropTypes.bool,
-  isLoading: PropTypes.bool
+  isError: PropTypes.bool.isRequired,
+  isLoading: PropTypes.bool.isRequired,
+  getSingleBeer: PropTypes.func.isRequired
 };
 
 export default RandomBeer;

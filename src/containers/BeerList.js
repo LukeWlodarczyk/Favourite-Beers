@@ -74,8 +74,9 @@ const Beers = connect(mapStateToProps, { getBeers })(BeerList);
 
 BeerList.propTypes = {
   beerList: PropTypes.array.isRequired,
-  isError: PropTypes.bool,
-  isLoading: PropTypes.bool
+  isError: PropTypes.bool.isRequired,
+  isLoading: PropTypes.bool.isRequired,
+  getBeers: PropTypes.func.isRequired
 };
 
 export default Beers

@@ -62,8 +62,9 @@ const BeerItem = connect(mapStateToProps, { getSingleBeer })(BeerItemFull);
 
 BeerItemFull.propTypes = {
   beer: PropTypes.object.isRequired,
-  isError: PropTypes.bool,
-  isLoading: PropTypes.bool
+  isError: PropTypes.bool.isRequired,
+  isLoading: PropTypes.bool.isRequired,
+  getSingleBeer: PropTypes.func.isRequired
 };
 
 export default BeerItem
