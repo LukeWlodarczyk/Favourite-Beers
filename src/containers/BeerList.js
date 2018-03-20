@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 import BeerItem from '../components/BeerItem';
 import { getBeers } from '../actions/index';
 import Spinner from '../components/Spinner';
-import ErrorInfo from '../components/ErrorInfo';
 
 const mapStateToProps = state => {
   return {
@@ -18,36 +17,43 @@ class BeerList extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      num: 20
+      page: 1
     }
   }
   componentDidMount() {
+    window.addEventListener('scroll', this.onScroll, false);
     const { getBeers } = this.props;
-    getBeers();
+    getBeers(1);
   }
+
+  componentWillUnmount() {
+      window.removeEventListener('scroll', this.onScroll, false);
+    }
+
+  onScroll = () => (
+    ( window.innerHeight + window.scrollY) >= (document.body.offsetHeight - 500)
+      && !this.props.isLoading
+      && !this.props.isError
+      && this.state.page < 13
+    )
+      && this.loadMore();
 
 
   loadMore = () => {
+    const { getBeers } = this.props;
     this.setState({
-      num: this.state.num+20
+      page: this.state.page + 1
     })
+    getBeers(this.state.page);
   }
 
   render() {
     const { beerList, isError, isLoading } = this.props;
 
-    if(isError) {
-      return <ErrorInfo />
-    }
-
-    if(isLoading) {
-      return <Spinner />
-    }
-
     return (
       <div>
         <ul className='beer-list'>
-          {beerList.slice(0, this.state.num).map( beer => (
+          {beerList.map( beer => (
             <li key={beer.id}>
               <BeerItem
                 beer={beer}
@@ -55,8 +61,12 @@ class BeerList extends Component {
             </li>
           ))}
         </ul>
-        {(this.state.num < beerList.length) &&
-          <button className='btn-more' onClick={this.loadMore} >More</button>
+        {isLoading && <Spinner /> }
+        {(isError) &&
+          <div>
+            <p>Something went wrong...</p>
+            <button className='btn-more' onClick={this.loadMore}>Try again</button>
+          </div>
         }
       </div>
     )

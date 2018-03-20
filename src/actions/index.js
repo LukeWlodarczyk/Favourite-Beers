@@ -1,6 +1,7 @@
 import axios from 'axios';
 import {  GET_BEERS_REQUESTED,
-          GET_BEERS_DONE,
+          GET_BEERS_INIT_DONE,
+          GET_BEERS_MORE_DONE,
           GET_BEERS_FAILED,
           GET_BEER_REQUESTED,
           GET_BEER_DONE,
@@ -15,9 +16,16 @@ const getBeersRequested = () => {
   };
 }
 
-const getBeersDone = data => {
+const getBeersInitialDone = data => {
   return {
-    type: GET_BEERS_DONE,
+    type: GET_BEERS_INIT_DONE,
+    payload: data
+  };
+}
+
+const getBeersMoreDone = data => {
+  return {
+    type: GET_BEERS_MORE_DONE,
     payload: data
   };
 }
@@ -28,14 +36,16 @@ const getBeersFailed = () => {
   };
 }
 
-export const getBeers = () => dispatch => {
+export const getBeers = (page) => dispatch => {
 
   dispatch(getBeersRequested());
 
-  axios.get('https://api.punkapi.com/v2/beers?page=1&per_page=80')
+  axios.get(`https://api.punkapi.com/v2/beers?page=${page}&per_page=20`)
     .then(res => res.data)
     .then(data => {
-      dispatch(getBeersDone(data));
+      page === 1
+        ? dispatch(getBeersInitialDone(data))
+        : dispatch(getBeersMoreDone(data));
     })
     .catch(error => {
       dispatch(getBeersFailed(error));
