@@ -42,21 +42,18 @@ class RandomBeerItem extends Component {
   }
 
   render() {
-
     const { beer, isError, isLoading } = this.props;
-
-    if(isError) {
-      return <ErrorInfo />
-    }
-
-    if(isLoading || this.state.isShuffling) {
-      return <Spinner />
-    }
 
     return (
       <div className='random-container'>
-        <BeerItem beer={beer} />
         <button className='btn-random' onClick={this.getRandomBeer}>Get random Beer</button>
+
+        {isLoading || this.state.isShuffling
+          ? <Spinner />
+          : isError
+            ? <ErrorInfo />
+            : <BeerItem beer={beer} />
+        }
       </div>
     )
   }

@@ -12,7 +12,7 @@ export default (state=initialState, action) => {
     case GET_BEER_REQUESTED:
       return { ...state, isLoading: true };
     case GET_BEER_DONE:
-      return { ...state, isLoading: false, beer: action.payload };
+      return { ...state, isLoading: false, beer: action.payload, isError: false };
     case GET_BEER_FAILED:
       return { ...state, isLoading: false, isError: true}
     default:
