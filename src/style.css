@@ -161,8 +161,8 @@ body {
   padding: 2em;
   display: flex;
   flex-direction: column-reverse;
+  align-items: flex-end;
   background: rgba(0, 0, 0, 0.1);
-  min-height: 100vh;
   animation: fadeIn .8s .2s forwards;
   opacity: 0;
 }

@@ -62,7 +62,7 @@ class BeerList extends Component {
           ))}
         </ul>
         {isLoading && <Spinner /> }
-        {(isError) &&
+        {isError &&
           <button className='btn-more' onClick={this.loadMore}>Ooops! Try again</button>
         }
       </div>
